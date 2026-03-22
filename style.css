@@ -12,18 +12,18 @@
     --darkblue:rgb(7, 7, 34);
     --transparent:rgb(255, 255, 255, 0.2);
     --grey:rgba(128, 128, 128, 0.215);
+    --radium:#ffffff;
 }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
     font-family: system-ui;
-    
 
 }
 html{
     scroll-behavior: smooth;
-
+    overflow-y: scroll;
 }
 body{
     background: url("image/image/back1.png"), linear-gradient(120deg, var(--bg1), var(--bg2));
@@ -63,8 +63,9 @@ header{
     background: var(--white);
     box-shadow: var(--shadow);
     width: 100%;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: 999;
     padding: 10px ;
     scroll-margin-top: 5px;
@@ -87,14 +88,21 @@ header{
 .menu{
     display: flex;
     list-style: none;
+
 }
 .menu li{
     margin: 0 15px;
     font-weight: 500;
     cursor: pointer;
+
 }
-.menu li:hover{
-    color: var(--blue);
+.menu li a{
+    text-decoration: none;
+    color:#1a2980;
+
+}
+.menu li a:hover{
+    color:#26D0CE ;
 }
 .nav-actions{
     display: flex;
@@ -111,6 +119,7 @@ header{
 .home{
     padding: 80px 0;
     position: relative;
+    margin-top: 50px;
 }
 .home-flex{
     display: flex;
@@ -153,36 +162,40 @@ header{
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    border: none;
-    transition: 0.4s all;
-    border: 3px solid var(--blue);
+    transition: 0.3s all;
+    border: 2px solid transparent ;
+    box-sizing:border-box;
 }
-.btn.primary{
-    background: var(--blue);
-    color: var(--white);
+
+/* --- Primary Button (My Projects) --- */
+.btn.primary {
+  background: linear-gradient(90deg, #1a2980, #26D0CE);
+    color: white;
+    border: 2px solid ;
+    transition: 0.3s all;
 }
-.primary:hover{
-    background: transparent;
-    color: var(--blue);
-    border:3px solid var(--blue);
+
+.primary:hover {
+  background: linear-gradient(white, white) padding-box,
+                linear-gradient(90deg, #1a2980, #26D0CE) border-box;
+    color: #1a2980;
+    border-radius: 10px;
 }
-.btn.primary{
-    background:  var(--blue);
-    color: var(--white);
-}
-.primary:hover{
-    background: transparent;
-    color: var(--blue);
-    border: 3px solid var(--blue);
-}
-.btn.outline{
-    border: 2px solid transparent;
+
+
+
+
+/* --- Outline Button (Contact Me) --- */
+.btn.outline {
+    border: 2px solid  #26D0CE, #1a2980;
     background: linear-gradient(white, white)padding-box,
                 linear-gradient(90deg,#1a2980 , #26D0CE )border-box;
 }
-.outline:hover{
-    background: var(--blue);
-    color: var(--white);
+
+.outline:hover {
+    background: linear-gradient(90deg, #1a2980, #26D0CE);
+    color: white;
+    border-radius: 10px;
 }
 .count{
     background: var(--blue);
@@ -221,6 +234,7 @@ header{
 .image-bg{
     position: absolute;
     right: 0;
+    margin-left: -10px;
     top: 50%;
     transform: translateY(-50%);
     width: 420px;
@@ -256,7 +270,7 @@ header{
     top: 20px;
     transform: rotate(30deg);
     transform-origin: center center;
-    animation: spin 6s linear infinite;
+    animation: spin 4s linear infinite;
 }
 @keyframes spin{
     from{transform: rotate(0deg);}
@@ -271,7 +285,7 @@ header{
 }
 @keyframes moveLR{
     0%{transform: translateY(0);}
-    100%{transform:translateX(20px);}
+    100%{transform:translatex(20px);}
 }
 .avatars img{
     width: 50px;
@@ -284,7 +298,10 @@ header{
     max-width: 1100px;
     margin: auto;
     background: url("image/image/back1.png"), var(--blue);
-    border-radius: 12px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius:30px;
+    border-top-right-radius:30px;
     padding: 40px 30px;
     display: flex;
     justify-content: space-between;
@@ -358,7 +375,7 @@ header{
 .category-card:hover .icon{
     background: var(--blue);
 }
-.category-card:hover .icon img{filter: brightness(5);}
+.category-card:hover .icon img{filter: brightness(1);}
 .category-card h3{
     font-size: 16px;
     margin-bottom: 0px;
@@ -371,23 +388,23 @@ header{
 .icon{
     width: 60px;
     height: 60px;
-    border-radius: 12px;
+    border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 22px;
 }
-.icon img{width: 40px;}
+.icon img{width: 45px;}
 .design{background: #e6f4ff;}
-.marketing{background: var(blue);}
-.marketing img{filter: brightness(0.5);}
+.marketing{background: #f3eaff;;}
+.marketing img{filter: brightness(1);}
 .digital{background: #67ad5b29;}
 .business{background: #ffeaea;}
 .finance{background: #f3eaff;}
 .self{background: #ec6ea759;}
 
 /*courses section*/
-.courses{
+.projects{
     padding: 100px 0;
 }
 .course-grid{
@@ -532,9 +549,9 @@ header{
     animation: pulse 1.8s infinite;
 }
 @keyframes pulse{
-    0%{box-shawdow: 0 0 0 0 #5b5bee75;}
-    70%{box-shadow: 0 0 0 14px #5b5bee8a;}
-    100%{box-shadow: 0 0 0 0 #5b5bee75;}
+    0%{box-shawdow: 0 0 0 0 #26D0CE;}
+    70%{box-shadow: 0 0 0 14px #26d0cd88;}
+    100%{box-shadow: 0 0 0 0 #26d0cd29;}
 }
 .award-card{
     position:absolute ;
@@ -634,9 +651,10 @@ header{
 }
 .toggle{
     display: inline-flex;
-    background: var(--bgl);
+    background: var(--radium);
     padding: 5px;
     border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.737);
 }
 .toggle button{
     padding: 8px 20px;
@@ -678,7 +696,7 @@ header{
     font-weight: 900;
     margin-bottom: 15px;
 }
-.price-card h1 span{font-size:14px;}
+.price-card h1 span{font-size:25px;}
 .desc{
     font-size: 14px;
     margin-bottom: 20px;
@@ -712,9 +730,9 @@ margin-bottom: 25px;}
     font-size:10px;
     margin-right: 8px;
 }
-.disabled{color: #c4c4c4;}
+.disabled{color: black;}
 .disabled i{
-    background: #c4c4c4 !important;
+    background: var(--blue) !important;
 }
 /*testimonial section*/
 .testimonial-section{
@@ -816,7 +834,7 @@ textarea{
 }
 .blog-grid{
     display: flex;
-    gap: 30px;;
+    gap: 30px;
 }
 .blog-card{
     padding: 25px;
@@ -1004,7 +1022,7 @@ textarea{
 .scroll-top:hover{
     background: var(--light);
 }
-/*respnsive*/
+/*responsive*/
 @media (max-width:768px){
     .menu{
         position: absolute;
@@ -1014,17 +1032,25 @@ textarea{
         background: var(--blue);
         flex-direction: column;
         align-items: center;
-        display: none;
+        display:none;
+        padding-top: 15px;
         padding-bottom: 15px;
         z-index: 9;
+        border-radius: 50px;
+        box-shadow: 0 10px 20px black;
     }
+    
     
     .menu li{
         margin: 7px 15px;
     }
+    .menu li a{
+        color: var(--white);
+    }
     .menu.active{
         display: flex;
     }
+    
     .hamburger{
         display: block!important; color: var(--blue);
     }
@@ -1039,11 +1065,9 @@ textarea{
     }
     .rating{
         justify-content: center;
-        margin-left: 50px;
     }
     .count{
-        width: 40px;
-        height: 40px;
+        
     }
     
     .instructor-card{
@@ -1056,6 +1080,7 @@ textarea{
         font-size: 36px;
     }
     .stats-wrapper{
+        
         flex-direction: column;
         text-align: center;
     }
@@ -1087,4 +1112,30 @@ textarea{
     .blog-grid{flex-direction: column;}
     .blog-image img{height: 240px;}
     .footer-container{flex-direction: column;}
+
+     .social-icons {
+    justify-content: center;
+  }
+}
+
+.social-icons {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+/* Desktop → left side (default) */
+.social-icons {
+  justify-content: flex-start;
+}
+
+/* Icons style */
+.social-icons a {
+  font-size: 24px;
+  color: #000;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #00bcd4; /* your theme color */
 }
